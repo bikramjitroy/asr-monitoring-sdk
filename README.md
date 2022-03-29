@@ -5,3 +5,4 @@ Create a .env file and add environment variable
 MONITORING_API_KEY="API-KEY"
 MONITORING_URL_DOMAIN="Domain NAME"
 MONITORING_API_STAGE="prod"
+MONITORING_TMP_DIR="\_tmp"

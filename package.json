@@ -1,6 +1,6 @@
 {
   "name": "@bikramjitroy/asr_monitoring_sdk",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "API SDK for asr monitoring event",
   "main": "index.js",
   "scripts": {
@@ -9,8 +9,11 @@
   "author": "bikramjit roy",
   "license": "ISC",
   "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "axios": "^0.26.1",
     "dotenv": "^16.0.0",
+    "ffmpeg": "0.0.4",
+    "fluent-ffmpeg": "^2.1.2",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
