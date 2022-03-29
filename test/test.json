@@ -1,0 +1,37 @@
+{
+  "id": "test-id",
+  "asrSource": "Ameyo",
+  "audioSampleRate": 8000,
+  "languageCode": "en-IN",
+  "domain": "collection",
+  "modelVersion": "2022-01-23",
+  "modelID": "en-IN-collection-2022-01-23",
+  "botID": "Ameyo-CustomerCollectionBot-ID",
+  "type": "test",
+  "hints": [
+    "$PAYMENT_MODE",
+    "PAYTM",
+    "UPI",
+    "G Pay",
+    "Phone Pay",
+    "Online"
+  ],
+  "sessionID": "uu-abc-12345",
+  "bargeble": "true",
+  "interimCount": 6,
+  "interimData": [],
+  "firstVadTimestamp": 550,
+  "interimDataFirstTimestamp": 800,
+  "interimDataEndTimestamp": 3400,
+  "speechEndTimestamp": 3600,
+  "audioDuration": 4000,
+  "finalResultTimestamp": 4200,
+  "withoutLM": "Helo world",
+  "withLM": [
+    {
+      "text": "Hello world",
+      "confidence": 0.9
+    }
+  ],
+  "audioFileName": "test-id.wav"
+}
