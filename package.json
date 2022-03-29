@@ -1,6 +1,6 @@
 {
   "name": "@bikramjitroy/asr_monitoring_sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "API SDK for asr monitoring event",
   "main": "index.js",
   "scripts": {
