@@ -3,12 +3,6 @@ require('dotenv').config()
 //var fs = require('fs').promises;
 var fs = require('fs');
 
-const ffmpegInstaller = require('@ffmpeg-installer/ffmpeg');
-const ffmpeg = require('fluent-ffmpeg');
-
-ffmpeg.setFfmpegPath(ffmpegInstaller.path);
-
-
 const MONITOR_API = '/events/asr_monitoring_events/monitor'
 const UPLOAD_API = '/upload/asr-audio-stream/'
 
@@ -65,41 +59,11 @@ class StreamingASRMonitor {
   }
 
 
-  async concatAudio(outputFile) {
-    let command = ffmpeg();
-    if (this.filePath.length > 1) {
-      for (let i = 0; i < this.filePath.length; i++) {
-        command.input(this.filePath[i])
-      }
-    }
-
-    return new Promise((resolve, reject) => { 
-      command.on('end', function() {
-            console.log('file has been converted succesfully');
-            resolve();
-      })
-      .on('error', function(err) {
-            console.log('an error happened: ' + err.message);
-            reject(err);
-      }).mergeToFile(outputFile);
-    });
-  }
-
-
   async uploadAudioData() {
 
-    if (!fs.existsSync(TMP_DIR)){
-      fs.mkdirSync(TMP_DIR);
-    }
+    const audioContent = fs.readFileSync(this.filePath[0], 'binary');
 
-    const audioFileName = this.monitorEvent['audioFileName'];
-    const fileNameWithPath = TMP_DIR + '/' + audioFileName;
-
-    await this.concatAudio(fileNameWithPath);
-    //const audioContent = await fs.readFile(fileNameWithPath, 'binary');
-    const audioContent = fs.readFileSync(fileNameWithPath, 'binary');
-
-    const uploadURL = URL_DOMAIN + API_STAGE + UPLOAD_API + audioFileName;
+    const uploadURL = URL_DOMAIN + API_STAGE + UPLOAD_API + this.monitorEvent['audioFileName'];
     console.log('AUDIO URL', uploadURL)
     var config = {
       method: 'put',

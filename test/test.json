@@ -1,37 +1,68 @@
 {
-  "id": "test-id",
-  "asrSource": "Ameyo",
-  "audioSampleRate": 8000,
-  "languageCode": "en-IN",
-  "domain": "collection",
-  "modelVersion": "2022-01-23",
-  "modelID": "en-IN-collection-2022-01-23",
-  "botID": "Ameyo-CustomerCollectionBot-ID",
-  "type": "test",
-  "hints": [
-    "$PAYMENT_MODE",
-    "PAYTM",
-    "UPI",
-    "G Pay",
-    "Phone Pay",
-    "Online"
-  ],
-  "sessionID": "uu-abc-12345",
-  "bargeble": "true",
-  "interimCount": 6,
-  "interimData": [],
-  "firstVadTimestamp": 550,
-  "interimDataFirstTimestamp": 800,
-  "interimDataEndTimestamp": 3400,
-  "speechEndTimestamp": 3600,
-  "audioDuration": 4000,
-  "finalResultTimestamp": 4200,
-  "withoutLM": "Helo world",
-  "withLM": [
-    {
-      "text": "Hello world",
-      "confidence": 0.9
-    }
-  ],
-  "audioFileName": "test-id.wav"
+    "id":"test---test-audio",
+    "asrSource":"ameyo",
+    "audioSampleRate":8000,
+    "languageCode":"en-IN",
+    "speechAlternateLanguages":[
+        "en-IN", "hi-IN"
+    ],
+    "domain":"bfsi_collection",
+    "modelVersion":"V-2022-04-01",
+    "modelID":"en-IN--V-2022-04-01--bfsi_collection",
+    "type":"test",
+    "hints":[
+        {
+            "phrases":[
+                "ye",
+                "yes please",
+                "yes please tell me",
+                "yes tell me",
+                "yes that correct",
+                "nope",
+                "na",
+                "No"
+            ]
+        }
+    ],
+    "bargeble":true,
+    "interimCount":3,
+    "interimData":[
+        {
+            "transcript":"haan",
+            "confidence":0.759,
+	    "time":700
+        },
+        {
+            "transcript":"haan yes",
+            "confidence":0.759,
+	    "time":900
+        },
+        {
+            "transcript":"haan yes  speaking",
+            "confidence":0.999,
+	    "time":1400
+        }
+    ],
+    "firstVadTimestamp":500,
+    "interimDataFirstTimestamp":900,
+    "interimDataEndTimestamp":1400,
+    "speechEndTimestamp":1500,
+    "audioDuration":1550,
+    "finalResultTimestamp":1580,
+    "withoutLM":"haan yes speaking",
+    "withLM":[
+        {
+            "transcript":"haan yes  speaking",
+            "confidence":0.999,
+	    "time":1500
+        },
+        {
+            "transcript":"haan yes im speaking",
+            "confidence":0.998,
+	    "time":1500
+        }
+
+    ],
+    "nBestList":2,
+    "audioFileName":"test---test-audio.wav"
 }

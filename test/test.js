@@ -19,7 +19,6 @@ describe("upload()", function() {
         let streamingASRMonitor  = new StreamingASRMonitor();
         //const expectedError = new Error("You have no TODOs stored. Why don't you add one first?");
         streamingASRMonitor.addFilepath('test/test.wav')
-        streamingASRMonitor.addFilepath('test/test.wav')
         streamingASRMonitor.addMonitorEvent(data)
 
         await streamingASRMonitor.upload((cb) => {
