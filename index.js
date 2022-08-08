@@ -61,7 +61,8 @@ class StreamingASRMonitor {
 
   async uploadAudioData() {
 
-    const audioContent = fs.readFileSync(this.filePath[0], 'binary');
+    const audioContent = fs.createReadStream(this.filePath[0]);
+
 
     const uploadURL = URL_DOMAIN + API_STAGE + UPLOAD_API + this.monitorEvent['audioFileName'];
     console.log('AUDIO URL', uploadURL)
