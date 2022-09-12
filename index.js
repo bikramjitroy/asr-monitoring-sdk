@@ -39,7 +39,7 @@ class StreamingASRMonitor {
 
     return axios(config)
     .then(function (response) {
-      console.log('Response from Event API', response.status, JSON.stringify(response.data), );
+      console.log('Response from Event API', response.status, JSON.stringify(response.data));
       if (response.status == 200) {
         return new Promise((resolve) => {
           resolve({'status': 'success', "status": response.status});
@@ -60,8 +60,14 @@ class StreamingASRMonitor {
 
 
   async uploadAudioData() {
-
-    const audioContent = fs.createReadStream(this.filePath[0]);
+    var audioContent = null;
+    //console.log("=========",this.filePath, !this.filePath);
+    try {
+    audioContent = fs.createReadStream(this.filePath[0]);
+    }
+    catch (err){
+      return {'status': 'failure', 'error': err.code, 'comment': 'Audio Uploadfailed/Skipped', 'filename':this.filePath}
+    }
 
 
     const uploadURL = URL_DOMAIN + API_STAGE + UPLOAD_API + this.monitorEvent['audioFileName'];
@@ -107,8 +113,8 @@ class StreamingASRMonitor {
       return uploadEventData().then(function(responseOnEvent){
         console.log("UPLOAD EVENT DATA OUTPUT:", responseOnEvent);
         return new Promise((resolve) => {
-          const response = {'status': 'success', 'comment': 'Data and audio uploaded'}
-          resolve({'status': 'success', 'comment': 'Data and audio uploaded'})
+          const response = {'status': 'success', 'comment': 'Data and audio uploaded', 'audio':responseOnAudio,'data':responseOnEvent}
+          resolve({'status': 'success', 'comment': 'Data and audio uploaded', 'audio':responseOnAudio,'data':responseOnEvent})
           if (callback) {
             callback();
           }
